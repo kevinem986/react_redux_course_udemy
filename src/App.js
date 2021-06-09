@@ -22,6 +22,13 @@ function App() {
   // const someText = 'Some Text';
   // const someDiv = <div style={{backgroundColor: 'white'}}>Some Div</div>
 
+  const buttonsMarkup = (
+    <div>
+      <button className="button button2">YES</button>
+      <button className="button button3">NO </button> 
+    </div>
+  );
+
   return (
     // <div className="outerdiv">
     //   <div className="innerdiv">This is a green box</div>
@@ -36,9 +43,15 @@ function App() {
     // <div style={styles.innerdiv}>{someDiv}</div>
   // </div>
     <div className="App">
-      <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}/>
-      <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}/>
-      <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}/>
+      <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}> 
+        {buttonsMarkup}
+      </Card>
+      <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}> 
+        {buttonsMarkup}
+      </Card>
+      <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}> 
+        {buttonsMarkup}
+      </Card>
     </div>
   );
 }
