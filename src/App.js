@@ -1,10 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
+import './custom.css'
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello, This is my first app in React!!!</h1>
+    <div className="outerdiv">
+      <div className="innerdiv">This is a green box</div>
     </div>
   );
 }
