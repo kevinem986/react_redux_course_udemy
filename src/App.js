@@ -17,6 +17,9 @@ function App() {
     }
   }
 
+  const someText = 'Some Text';
+  const someDiv = <div style={{backgroundColor: 'white'}}>Some Div</div>
+
   return (
     // <div className="outerdiv">
     //   <div className="innerdiv">This is a green box</div>
@@ -24,8 +27,11 @@ function App() {
     // <div style={{padding:'70px 0', backgroundColor: 'blue'}}>
     //   <div className="innerdiv">This is a green box</div>
     // </div>
+    // <div style={styles.outerdiv}>
+    // <div style={styles.innerdiv}>This is a green box</div>
     <div style={styles.outerdiv}>
-    <div style={styles.innerdiv}>This is a green box</div>
+    <div style={styles.innerdiv}>{someText}</div>
+    <div style={styles.innerdiv}>{someDiv}</div>
   </div>
   );
 }
