@@ -1,5 +1,6 @@
 import './assets/css/custom.css';
 import Card from './components/Card';
+import faker from 'faker';
 
 function App() {
 
@@ -35,9 +36,9 @@ function App() {
     // <div style={styles.innerdiv}>{someDiv}</div>
   // </div>
     <div className="App">
-      <Card />
-      <Card />
-      <Card />
+      <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}/>
+      <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}/>
+      <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}/>
     </div>
   );
 }
