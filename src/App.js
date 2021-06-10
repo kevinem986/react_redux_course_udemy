@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './assets/css/custom.css';
 import Card from './components/Card';
-import faker from 'faker';
+// import faker from 'faker';
 
 function App() {
 
@@ -33,8 +33,8 @@ function App() {
   //Hooks
   const [name, setName] = useState('Alan Smith')
 
-  const changeNameHandler = () => {
-    setName('Michael Chan');
+  const changeNameHandler = (name) => {
+    setName(name);
   }
 
   return (
@@ -60,8 +60,11 @@ function App() {
       <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}> 
         {buttonsMarkup}
       </Card> */}
-       <button className="button" onClick={changeNameHandler}>Change Name</button>
-       <Card avatar="https://cdn.fakercloud.com/avatars/scottkclark_128.jpg" name={name} title="Human Markets Technician"> 
+       <button className="button" onClick={() => changeNameHandler('John Doe')}>Change Name</button>
+       <Card 
+        avatar="https://cdn.fakercloud.com/avatars/scottkclark_128.jpg" 
+        name={name} title="Human Markets Technician"
+        onChangeName={() => changeNameHandler('Michael Chan')}> 
         {buttonsMarkup}
       </Card>
     </div>
