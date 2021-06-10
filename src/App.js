@@ -23,6 +23,15 @@ function App() {
   // const someText = 'Some Text';
   // const someDiv = <div style={{backgroundColor: 'white'}}>Some Div</div>
 
+  //Hooks
+  const [name, setName] = useState('Alan Smith');
+  const [showCard, setShowCard] = useState(true);
+
+  const changeNameHandler = name => setName(name);
+  const changeInputHandler = event => setName(event.target.value)
+  const toggleShowCard = () => setShowCard(!showCard);
+
+  // Elements
   const buttonsMarkup = (
     <div>
       <button className="button button2">YES</button>
@@ -30,12 +39,17 @@ function App() {
     </div>
   );
 
-  //Hooks
-  const [name, setName] = useState('Alan Smith')
-
-  const changeNameHandler = name => setName(name);
-
-  const changeInputHandler = event => setName(event.target.value)
+  const cardsMarkup = (
+    showCard && 
+    <Card 
+      avatar="https://cdn.fakercloud.com/avatars/scottkclark_128.jpg" 
+      name={name} 
+      title="Human Markets Technician"
+      onChangeInput={changeInputHandler}
+      onChangeName={() => changeNameHandler('Michael Chan')}> 
+      {buttonsMarkup}
+    </Card>
+  )
 
   return (
     // <div className="outerdiv">
@@ -60,15 +74,10 @@ function App() {
       <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}> 
         {buttonsMarkup}
       </Card> */}
-       <button className="button" onClick={() => changeNameHandler('John Doe')}>Change Name</button>
-       <Card 
-        avatar="https://cdn.fakercloud.com/avatars/scottkclark_128.jpg" 
-        name={name} 
-        title="Human Markets Technician"
-        onChangeInput={changeInputHandler}
-        onChangeName={() => changeNameHandler('Michael Chan')}> 
-        {buttonsMarkup}
-      </Card>
+
+       <button className="button" onClick={toggleShowCard}>Toggle Show/Hide</button>       
+       {/* <button className="button" onClick={() => changeNameHandler('John Doe')}>Change Name</button> */}
+       {cardsMarkup}       
     </div>
   );
 }
