@@ -33,9 +33,9 @@ function App() {
   //Hooks
   const [name, setName] = useState('Alan Smith')
 
-  const changeNameHandler = (name) => {
-    setName(name);
-  }
+  const changeNameHandler = name => setName(name);
+
+  const changeInputHandler = event => setName(event.target.value)
 
   return (
     // <div className="outerdiv">
@@ -63,7 +63,9 @@ function App() {
        <button className="button" onClick={() => changeNameHandler('John Doe')}>Change Name</button>
        <Card 
         avatar="https://cdn.fakercloud.com/avatars/scottkclark_128.jpg" 
-        name={name} title="Human Markets Technician"
+        name={name} 
+        title="Human Markets Technician"
+        onChangeInput={changeInputHandler}
         onChangeName={() => changeNameHandler('Michael Chan')}> 
         {buttonsMarkup}
       </Card>
