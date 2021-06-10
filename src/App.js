@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './assets/css/custom.css';
 import Card from './components/Card';
 import faker from 'faker';
@@ -29,6 +30,13 @@ function App() {
     </div>
   );
 
+  //Hooks
+  const [name, setName] = useState('Alan Smith')
+
+  const changeNameHandler = () => {
+    setName('Michael Chan');
+  }
+
   return (
     // <div className="outerdiv">
     //   <div className="innerdiv">This is a green box</div>
@@ -43,13 +51,17 @@ function App() {
     // <div style={styles.innerdiv}>{someDiv}</div>
   // </div>
     <div className="App">
-      <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}> 
+      {/* <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}> 
         {buttonsMarkup}
       </Card>
       <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}> 
         {buttonsMarkup}
       </Card>
       <Card avatar={faker.image.avatar()} name={`${faker.name.firstName()} ${faker.name.lastName()}`} title={`${faker.name.title()}`}> 
+        {buttonsMarkup}
+      </Card> */}
+       <button className="button" onClick={changeNameHandler}>Change Name</button>
+       <Card avatar="https://cdn.fakercloud.com/avatars/scottkclark_128.jpg" name={name} title="Human Markets Technician"> 
         {buttonsMarkup}
       </Card>
     </div>
