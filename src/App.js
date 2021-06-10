@@ -8,16 +8,19 @@ function App() {
   //Hooks
   const [cards, setCards] = useState([
     {
+      id: 'card-01',
       name: `${faker.name.firstName()} ${faker.name.lastName()}`,
       title: `${faker.name.title()}`,
       avatar: `${faker.image.avatar()}`,
     },
     {
+      id: 'card-02',
       name: `${faker.name.firstName()} ${faker.name.lastName()}`,
       title: `${faker.name.title()}`,
       avatar: `${faker.image.avatar()}`,
     },
     {
+      id: 'card-03',
       name: `${faker.name.firstName()} ${faker.name.lastName()}`,
       title: `${faker.name.title()}`,
       avatar: `${faker.image.avatar()}`,
@@ -27,14 +30,22 @@ function App() {
 
   const toggleShowCard = () => setShowCard(!showCard);
 
+  const deleteCardHandler = (cardIndex) => {
+    const cardsCopy = [...cards];
+    cardsCopy.splice(cardIndex,1);
+    setCards(cardsCopy);
+  }
+
   // Elements
   const cardsMarkup = (
     showCard && (
-      cards.map(card => 
+      cards.map((card, index) => 
         <Card 
+          key={card.id}
           avatar={card.avatar}
           name={card.name} 
           title={card.title} 
+          onDelete={() => deleteCardHandler(index)}
         /> 
       )      
     )
