@@ -46,6 +46,14 @@ function App() {
     setCards(cardsCopy);
   };
 
+  // Dynamic button style
+  const buttonStyle = {
+    backgroundColor: null
+  }
+
+  if(cards.length < 3) buttonStyle.backgroundColor = 'lightpink';
+  if(cards.length < 2) buttonStyle.backgroundColor = 'red';
+
   // Elements
   const cardsMarkup =
     showCard &&
@@ -62,7 +70,7 @@ function App() {
 
   return (
     <div className="App">
-      <button className="button" onClick={toggleShowCard}>
+      <button className="button" style={buttonStyle} onClick={toggleShowCard}>
         Toggle Show/Hide
       </button>
       {cardsMarkup}
