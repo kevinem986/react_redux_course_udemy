@@ -2,6 +2,21 @@ import React, { useState } from "react";
 import "./assets/css/custom.css";
 import Card from "./components/Card";
 import faker from "faker";
+import styled from "styled-components";
+
+const Button = styled.button`
+  background-color: ${props => props.length > 2 ? '#4CAF50' : props.length < 2 ? 'red' : 'pink'};
+  border: none;
+  color: ${props => props.length <= 1 ? 'black' : 'white'};
+  font-weight: ${props => props.length <= 1 ? 'bold' : 'normal'};
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+`
 
 function App() {
   //Hooks
@@ -78,6 +93,7 @@ function App() {
       {/* <button className="button" style={buttonStyle} onClick={toggleShowCard}>
         Toggle Show/Hide
       </button> */}
+      <Button length={cards.length}>Toggle</Button>
       <button className={classes.join(' ')} onClick={toggleShowCard}>
         Toggle Show/Hide
       </button>
