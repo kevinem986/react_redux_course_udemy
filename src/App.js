@@ -47,12 +47,17 @@ function App() {
   };
 
   // Dynamic button style
-  const buttonStyle = {
-    backgroundColor: null
-  }
+  // const buttonStyle = {
+  //   backgroundColor: null
+  // }
 
-  if(cards.length < 3) buttonStyle.backgroundColor = 'lightpink';
-  if(cards.length < 2) buttonStyle.backgroundColor = 'red';
+  // if(cards.length < 3) buttonStyle.backgroundColor = 'lightpink';
+  // if(cards.length < 2) buttonStyle.backgroundColor = 'red';
+
+  const classes = ['button'];
+
+  if(cards.length < 3) classes.push('pink');
+  if(cards.length < 2) classes.push('red text');
 
   // Elements
   const cardsMarkup =
@@ -70,7 +75,10 @@ function App() {
 
   return (
     <div className="App">
-      <button className="button" style={buttonStyle} onClick={toggleShowCard}>
+      {/* <button className="button" style={buttonStyle} onClick={toggleShowCard}>
+        Toggle Show/Hide
+      </button> */}
+      <button className={classes.join(' ')} onClick={toggleShowCard}>
         Toggle Show/Hide
       </button>
       {cardsMarkup}
