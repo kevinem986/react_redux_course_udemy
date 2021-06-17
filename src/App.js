@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Card from "./components/Elements/Card";
 import Button from "./components/Elements/Button";
 import "./assets/css/custom.css";
@@ -34,9 +34,9 @@ function App() {
   ]);
   const [showCard, setShowCard] = useState(true);
   
-  useEffect(() => {
-    alert("App js useEffect");
-  }, [cards]);
+  // useEffect(() => {
+  //   alert("App js useEffect");
+  // }, [cards]);
 
   const toggleShowCard = () => setShowCard(!showCard);
 
