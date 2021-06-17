@@ -21,6 +21,9 @@ class Card extends Component {
     console.log("Card js componentDidUpdate", snapshot);
   }
 
+  componentWillUnmount() {
+    console.log("Card js componentWillUnmount");
+  }
   render() {
     console.log("Card js rendering");
     return (
