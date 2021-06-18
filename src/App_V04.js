@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Card from "./components/Elements/Card";
 import Button from "./components/Elements/Button";
 import "./assets/css/custom.css";
+import faker from "faker";
 import { ThemeProvider } from "styled-components";
-import axios from "axios";
 
 const theme = {
   primary: "#4CAF50",
@@ -12,15 +12,31 @@ const theme = {
 
 function App() {
   //Hooks
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([
+    {
+      id: "card-01",
+      name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+      title: `${faker.name.title()}`,
+      avatar: `${faker.image.avatar()}`,
+    },
+    {
+      id: "card-02",
+      name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+      title: `${faker.name.title()}`,
+      avatar: `${faker.image.avatar()}`,
+    },
+    {
+      id: "card-03",
+      name: `${faker.name.firstName()} ${faker.name.lastName()}`,
+      title: `${faker.name.title()}`,
+      avatar: `${faker.image.avatar()}`,
+    },
+  ]);
   const [showCard, setShowCard] = useState(true);
-
-  useEffect(() => {
-    axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
-      console.log(res.data);
-      setCards(res.data);
-    });
-  }, []);
+  
+  // useEffect(() => {
+  //   alert("App js useEffect");
+  // }, [cards]);
 
   const toggleShowCard = () => setShowCard(!showCard);
 
@@ -60,8 +76,9 @@ function App() {
     cards.map((card, index) => (
       <Card
         key={card.id}
+        avatar={card.avatar}
         name={card.name}
-        phone={card.phone}
+        title={card.title}
         onDelete={() => deleteCardHandler(index)}
         onChangeName={(event) => changeNameHandler(event, card.id)}
       />
