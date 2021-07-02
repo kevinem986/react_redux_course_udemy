@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import { Button, ButtonGroup } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { CounterContext } from "../../App";
-import ComponentE from "../ComponentE";
 
-const ComponentD = () => {
+const ComponentF = () => {
   const counterContext = useContext(CounterContext);
+  console.log(counterContext);
   const { counter, dispatch } = counterContext;
 
   return (
@@ -33,10 +33,8 @@ const ComponentD = () => {
           Reset
         </Button>
       </ButtonGroup>
-      <p></p>
-      <ComponentE />
     </div>
   );
 };
 
-export default ComponentD;
+export default ComponentF;
