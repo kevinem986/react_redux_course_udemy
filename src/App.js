@@ -1,4 +1,6 @@
 import React, { useEffect, useReducer } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { ListGroup, ListGroupItem, Badge } from 'reactstrap';
 import "./assets/css/custom.css";
 import axios from "axios";
 
@@ -43,9 +45,9 @@ function App() {
   }, []);
 
   let listMarkup = (
-    <ul>
-      {state.todos.map(todo => <li key={todo.id}>{todo.title}</li>)}
-    </ul>
+    <ListGroup>
+       {state.todos.map(todo => <ListGroupItem key={todo.id}>{todo.title} {todo.completed ? (<Badge color='success'>Completed</Badge>) : (<Badge color="danger">Incomplete</Badge>)}</ListGroupItem>)}
+    </ListGroup>
   )
 
   return <div className="App">
