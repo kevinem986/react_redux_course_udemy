@@ -1,20 +1,27 @@
-import React, { useReducer, createContext } from "react";
+import React, { useEffect, useReducer } from "react";
 import "./assets/css/custom.css";
-import ComponentD from "./components/ComponentD";
+import axios from "axios";
 
-export const CounterContext = createContext();
 const initialState = {
-  counter: 0,
+  loading: true,
+  error: "",
+  todos: [],
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "increment":
-      return { ...state, counter: state.counter + action.payload };
-    case "decrement":
-      return { ...state, counter: state.counter - action.payload };
-    case "reset":
-      return initialState;
+    case "SET_DATA":
+      return {
+        loading: false,
+        error: "",
+        todos: action.payload,
+      };
+    case "SET_ERROR":
+      return {
+        loading: false,
+        error: "There are some errors.",
+        todos: [],
+      };
     default:
       return state;
   }
@@ -23,14 +30,27 @@ const reducer = (state, action) => {
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  return (
-    <CounterContext.Provider value={{ counter: state.counter, dispatch }}>
-      <div className="App">
-        App JS Counter: {state.counter}
-        <ComponentD />
-      </div>
-    </CounterContext.Provider>
-  );
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos")
+      .then((res) => {
+        console.log(res.data);
+        dispatch({ type: "SET_DATA", payload: res.data });
+      })
+      .catch((err) => {
+        dispatch({ type: "SET_ERROR" });
+      });
+  }, []);
+
+  let listMarkup = (
+    <ul>
+      {state.todos.map(todo => <li key={todo.id}>{todo.title}</li>)}
+    </ul>
+  )
+
+  return <div className="App">
+    {state.loading ? "Loading" : (state.error ? state.error : listMarkup)}
+  </div>;
 }
 
 export default App;
